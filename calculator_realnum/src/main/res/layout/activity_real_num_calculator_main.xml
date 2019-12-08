@@ -19,15 +19,15 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="50">
+            android:layout_weight="50"
+            android:id="@+id/scroll_view">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-
-                android:text="1,234 + 1,234"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:id="@+id/result_operator_text_view"/>
         </ScrollView>
 
         <TextView
@@ -35,8 +35,9 @@
             android:layout_height="0dp"
             android:layout_weight="50"
             android:gravity="center_vertical|right"
-            android:text="1,234"
-            android:textSize="50dp" />
+            android:text="0"
+            android:textSize="50dp"
+            android:id="@+id/result_text_view"/>
 
     </LinearLayout>
 
