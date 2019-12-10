@@ -106,6 +106,8 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void allClearButtonClick(View v) {
+        isFirstInput = true;
+        
     }
 
     private void operatorButtonClick(View v) {
