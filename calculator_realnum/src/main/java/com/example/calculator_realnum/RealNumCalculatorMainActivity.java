@@ -107,7 +107,9 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     private void allClearButtonClick(View v) {
         isFirstInput = true;
-        
+        resultTextView.setTextColor(0xFF666666);
+        resultTextView.setText(calculator.getClearInputText());
+
     }
 
     private void operatorButtonClick(View v) {
