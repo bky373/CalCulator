@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
@@ -97,6 +98,18 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void decimalButtonClick(View v) {
+        if (isFirstInput) {
+            resultTextView.setTextColor(0xFF000000);
+            resultTextView.setText("0.");
+            isFirstInput = false;
+        } else {
+            if (resultTextView.getText().toString().contains(".")) {
+                Toast.makeText(getApplicationContext(), "이미 소숫점이 존재합니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                resultTextView.append(".");
+            }
+        }
+
     }
 
     private void backspaceButtonClick(View v) {
