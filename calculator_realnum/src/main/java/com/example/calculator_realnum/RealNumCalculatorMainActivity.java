@@ -128,6 +128,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void allClearButtonClick(View v) {
+        calculator.setAllClear();
         clearText();
     }
 
@@ -138,6 +139,11 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void operatorButtonClick(View v) {
+        String getResultString = resultTextView.getText().toString();
+        String operator = v.getTag().toString();
+        String getResult = calculator.getResult(isFirstInput, getResultString, operator);
+        resultTextView.setText(getResult);
+        isFirstInput = true;
     }
 
     private void numberButtonClick(View v) {
