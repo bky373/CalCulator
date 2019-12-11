@@ -10,7 +10,7 @@ public class Calculator_RealNum {
 
     DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
 
-    public String getDecimalFormat(String changeString) {
+    public String getDecimalString(String changeString) {
         String setChangeString = changeString.replace(",", "");
         return decimalFormat.format(Double.parseDouble(setChangeString));
     }

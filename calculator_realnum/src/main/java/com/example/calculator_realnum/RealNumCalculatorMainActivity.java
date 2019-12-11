@@ -100,16 +100,28 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void backspaceButtonClick(View v) {
+        if (resultTextView.getText().toString().length() > 1) {
+            String getResultString = resultTextView.getText().toString().replace(",","");
+            String subString = getResultString.substring(0, getResultString.length() - 1);
+            String decimalString = calculator.getDecimalString(subString);
+            resultTextView.setText(decimalString);
+        } else {
+            clearText();
+        }
     }
 
     private void clearEntryButtonClick(View v) {
+        clearText();
     }
 
     private void allClearButtonClick(View v) {
+        clearText();
+    }
+
+    private void clearText() {
         isFirstInput = true;
         resultTextView.setTextColor(0xFF666666);
         resultTextView.setText(calculator.getClearInputText());
-
     }
 
     private void operatorButtonClick(View v) {
@@ -123,7 +135,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
         } else {
             String getResultText = resultTextView.getText().toString().replace(",",""); // 12,000 -> 12000
             getResultText = getResultText + v.getTag().toString();
-            String getDecimalString = calculator.getDecimalFormat(getResultText);
+            String getDecimalString = calculator.getDecimalString(getResultText);
             resultTextView.setText(getDecimalString);
             }
     }
