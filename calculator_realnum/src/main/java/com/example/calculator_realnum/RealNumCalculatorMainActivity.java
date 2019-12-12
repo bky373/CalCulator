@@ -2,7 +2,10 @@ package com.example.calculator_realnum;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -120,6 +123,9 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
                 String getResultString = resultTextView.getText().toString().replace(",", "");
                 String subString = getResultString.substring(0, getResultString.length() - 1);
                 String decimalString = calculator.getDecimalString(subString);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                    resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getStringSize(decimalString));
+                }
                 resultTextView.setText(decimalString);
             } else {
                 clearText();
@@ -140,6 +146,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     private void clearText() {
         isFirstInput = true;
         resultTextView.setTextColor(0xFF666666);
+        resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
         resultTextView.setText(calculator.getClearInputText());
     }
 
@@ -148,6 +155,9 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
         String operator = v.getTag().toString();
         String getResult = calculator.getResult(isFirstInput, getResultString, operator);
         resultTextView.setText(getResult);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getStringSize(getResult));
+        }
         resultExpressionTextView.setText(calculator.getExpressionString());
         isFirstInput = true;
     }
@@ -158,10 +168,30 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
             resultTextView.setText(v.getTag().toString());
             isFirstInput = false;
         } else {
-            String getResultText = resultTextView.getText().toString().replace(",",""); // 12,000 -> 12000
-            getResultText = getResultText + v.getTag().toString();
-            String getDecimalString = calculator.getDecimalString(getResultText);
-            resultTextView.setText(getDecimalString);
+            String getResultText = resultTextView.getText().toString().replace(",", ""); // 12,000 -> 12000
+            if (getResultText.length() > 15) {
+                Toast.makeText(getApplicationContext(), "16자리까지 입력 가능합니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                getResultText = getResultText + v.getTag().toString();
+                String getDecimalString = calculator.getDecimalString(getResultText);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                    resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getStringSize(getDecimalString));
+                }
+                resultTextView.setText(getDecimalString);
             }
+        }
+    }
+
+    private int getStringSize(String getDecimalString) {
+        if (getDecimalString.length() > 30) {
+            return 25;
+        } else if (getDecimalString.length() > 25) {
+            return 30;
+        } else if (getDecimalString.length() > 20) {
+            return 35;
+        } else if (getDecimalString.length() > 15) {
+            return 40;
+        }
+        return 50;
     }
 }
