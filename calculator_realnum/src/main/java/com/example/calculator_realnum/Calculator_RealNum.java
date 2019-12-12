@@ -4,39 +4,40 @@ import java.text.DecimalFormat;
 
 public class Calculator_RealNum {
 
-    final String CLEAR_INPUT_TEXT = "0";
-    double resultNumber = 0;
-    double lastInputNumber = 0;
-    String operator = "+";
-    String expressionString = "";
+    private final String CLEAR_INPUT_TEXT = "0";
+    private double resultNumber = 0;
+    private double lastInputNumber = 0;
 
-    DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+    private String operator = "+";
+    private String expressionString = "";
 
-    public String getDecimalString(String changeString) {
+    private DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+
+    String getDecimalString(String changeString) {
         String setChangeString = changeString.replace(",", "");
         return decimalFormat.format(Double.parseDouble(setChangeString));
     }
 
-    public String getDecimalString(double changeNumber) {
+    private String getDecimalString(double changeNumber) {
         return decimalFormat.format(changeNumber);
     }
 
-    public String getExpressionString() {
+    String getExpressionString() {
         return expressionString;
     }
 
-    public String getClearInputText() {
+    String getClearInputText() {
         return CLEAR_INPUT_TEXT;
     }
 
-    public void setAllClear() {
+    void setAllClear() {
         resultNumber = 0;
         lastInputNumber = 0;
         operator = "+";
         expressionString = "";
     }
 
-    public double calculate(double result, double lastNumber, String operator) {
+    private double calculate(double result, double lastNumber, String operator) {
         switch (operator) {
             case "+":
                 result += lastNumber;
@@ -54,7 +55,7 @@ public class Calculator_RealNum {
         return result;
     }
 
-    public String getResult(boolean isFirstInput, String getResultString, String lastOperator) {
+    String getResult(boolean isFirstInput, String getResultString, String lastOperator) {
         if (isFirstInput) {
             if (lastOperator.equals("=")) {
                 resultNumber = calculate(resultNumber, lastInputNumber, operator);
@@ -64,7 +65,7 @@ public class Calculator_RealNum {
                 if (expressionString.equals("")) {
                     expressionString = getResultString + " " + lastOperator;
                 } else {
-                    expressionString = expressionString.substring(0,expressionString.length()-1);
+                    expressionString = expressionString.substring(0, expressionString.length() - 1);
                     expressionString = expressionString + lastOperator;
                 }
             }

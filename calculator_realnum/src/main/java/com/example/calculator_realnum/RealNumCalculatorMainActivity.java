@@ -113,13 +113,17 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     }
 
     private void backspaceButtonClick(View v) {
-        if (resultTextView.getText().toString().length() > 1) {
-            String getResultString = resultTextView.getText().toString().replace(",","");
-            String subString = getResultString.substring(0, getResultString.length() - 1);
-            String decimalString = calculator.getDecimalString(subString);
-            resultTextView.setText(decimalString);
+        if (isFirstInput && !calculator.getExpressionString().equals("")) {
+            Toast.makeText(getApplicationContext(), "결과값은 지울 수 없습니다.", Toast.LENGTH_SHORT).show();
         } else {
-            clearText();
+            if (resultTextView.getText().toString().length() > 1) {
+                String getResultString = resultTextView.getText().toString().replace(",", "");
+                String subString = getResultString.substring(0, getResultString.length() - 1);
+                String decimalString = calculator.getDecimalString(subString);
+                resultTextView.setText(decimalString);
+            } else {
+                clearText();
+            }
         }
     }
 
