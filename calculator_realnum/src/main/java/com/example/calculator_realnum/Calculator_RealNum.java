@@ -8,12 +8,21 @@ public class Calculator_RealNum {
     double resultNumber = 0;
     double lastInputNumber = 0;
     String operator = "+";
+    String expressionString = "";
 
     DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
 
     public String getDecimalString(String changeString) {
         String setChangeString = changeString.replace(",", "");
         return decimalFormat.format(Double.parseDouble(setChangeString));
+    }
+
+    public String getDecimalString(double changeNumber) {
+        return decimalFormat.format(changeNumber);
+    }
+
+    public String getExpressionString() {
+        return expressionString;
     }
 
     public String getClearInputText() {
@@ -24,6 +33,7 @@ public class Calculator_RealNum {
         resultNumber = 0;
         lastInputNumber = 0;
         operator = "+";
+        expressionString = "";
     }
 
     public double calculate(double result, double lastNumber, String operator) {
@@ -42,5 +52,32 @@ public class Calculator_RealNum {
                 break;
         }
         return result;
+    }
+
+    public String getResult(boolean isFirstInput, String getResultString, String lastOperator) {
+        if (isFirstInput) {
+            if (lastOperator.equals("=")) {
+                resultNumber = calculate(resultNumber, lastInputNumber, operator);
+                expressionString = "";
+            } else {
+                operator = lastOperator;
+                if (expressionString.equals("")) {
+                    expressionString = getResultString + " " + lastOperator;
+                } else {
+                    expressionString = expressionString.substring(0,expressionString.length()-1);
+                    expressionString = expressionString + lastOperator;
+                }
+            }
+        } else {
+            lastInputNumber = Double.parseDouble(getResultString.replace(",", ""));
+            resultNumber = calculate(resultNumber, lastInputNumber, operator);
+            if (lastOperator.equals("=")) {
+                expressionString = "";
+            } else {
+                expressionString = expressionString + " " + getResultString + " " + lastOperator;
+                operator = lastOperator;
+            }
+        }
+        return getDecimalString(resultNumber);
     }
 }

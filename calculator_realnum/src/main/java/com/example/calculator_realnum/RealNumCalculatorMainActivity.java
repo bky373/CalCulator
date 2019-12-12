@@ -15,7 +15,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     boolean isFirstInput = true;
 
     ScrollView scrollView;
-    TextView resultOperatorTextView;
+    TextView resultExpressionTextView;
     TextView resultTextView;
 
     ImageButton allClearButton;
@@ -24,7 +24,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     ImageButton decimalButton;
 
     Button[] numberButton = new Button[10];
-    ImageButton[] operatorButton = new ImageButton[4];
+    ImageButton[] operatorButton = new ImageButton[5];
 
     Calculator_RealNum calculator = new Calculator_RealNum();
 
@@ -34,7 +34,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_num_calculator_main);
         scrollView = findViewById(R.id.scroll_view);
-        resultOperatorTextView = findViewById(R.id.result_operator_text_view);
+        resultExpressionTextView = findViewById(R.id.result_operator_text_view);
         resultTextView = findViewById(R.id.result_text_view);
 
         allClearButton = findViewById(R.id.all_clear_button);
@@ -129,6 +129,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     private void allClearButtonClick(View v) {
         calculator.setAllClear();
+        resultExpressionTextView.setText(calculator.getExpressionString());
         clearText();
     }
 
@@ -143,6 +144,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
         String operator = v.getTag().toString();
         String getResult = calculator.getResult(isFirstInput, getResultString, operator);
         resultTextView.setText(getResult);
+        resultExpressionTextView.setText(calculator.getExpressionString());
         isFirstInput = true;
     }
 
