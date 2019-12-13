@@ -13,18 +13,23 @@ public class OperatorButton extends AppCompatImageButton {
 
     public OperatorButton(Context context) {
         super(context);
-        setBackgroundResource(operatorButtonDefalut);
+        init();
     }
 
     public OperatorButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setBackgroundResource(operatorButtonDefalut);
-
+        init();
     }
 
     public OperatorButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
+
+    }
+
+    private void init() {
         setBackgroundResource(operatorButtonDefalut);
+        setPadding(70,70,70,70);
     }
 
     @Override
@@ -33,10 +38,10 @@ public class OperatorButton extends AppCompatImageButton {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 setBackgroundResource(operatorButtonClick);
-//                setPadding(10,10,0,0);
+                setPadding(80,80,70,70);
                 break;
             case MotionEvent.ACTION_UP:
-                setBackgroundResource(operatorButtonDefalut);
+                init();
                 break;
         }
         return true;
