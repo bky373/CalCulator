@@ -13,6 +13,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     boolean isFirstInput = true;
@@ -29,7 +31,9 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
     Button[] numberButton = new Button[10];
     ImageButton[] operatorButton = new ImageButton[5];
 
-    Calculator_RealNum calculator = new Calculator_RealNum();
+//    Calculator_RealNum calculator = new Calculator_RealNum();
+    Calculator_RealNum calculator = new Calculator_RealNum(new DecimalFormat("###,###.##########"));
+
 
 
     @Override
@@ -102,7 +106,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     private void decimalButtonClick(View v) {
         if (isFirstInput) {
-            resultTextView.setTextColor(0xFF000000);
+            resultTextView.setTextColor(0xFFFFFFFF);
             resultTextView.setText("0.");
             isFirstInput = false;
         } else {
@@ -145,7 +149,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     private void clearText() {
         isFirstInput = true;
-        resultTextView.setTextColor(0xFF666666);
+        resultTextView.setTextColor(0xFFCFCFCF);
         resultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50);
         resultTextView.setText(calculator.getClearInputText());
     }
@@ -164,7 +168,7 @@ public class RealNumCalculatorMainActivity extends AppCompatActivity {
 
     private void numberButtonClick(View v) {
         if (isFirstInput) {
-            resultTextView.setTextColor(0xFF000000);
+            resultTextView.setTextColor(0xFFFFFFFF);
             resultTextView.setText(v.getTag().toString());
             isFirstInput = false;
         } else {

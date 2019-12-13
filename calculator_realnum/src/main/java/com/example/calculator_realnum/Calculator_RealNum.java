@@ -11,7 +11,15 @@ public class Calculator_RealNum {
     private String operator = "+";
     private String expressionString = "";
 
-    private DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+    private DecimalFormat decimalFormat;
+
+    public Calculator_RealNum() {
+        decimalFormat = new DecimalFormat("###,###.#####");
+    }
+
+    public Calculator_RealNum(DecimalFormat decimalFormat) {
+        this.decimalFormat = decimalFormat;
+    }
 
     String getDecimalString(String changeString) {
         String setChangeString = changeString.replace(",", "");
