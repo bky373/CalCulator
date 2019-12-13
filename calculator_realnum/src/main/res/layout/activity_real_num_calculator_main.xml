@@ -72,7 +72,7 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/all_clear_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -81,7 +81,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_autorenew_black_24dp" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/clear_entry_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -90,7 +90,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_replay_black_24dp" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/backspace_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -99,12 +99,11 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_backspace_black_24dp" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/operator_button_4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="25"
-                android:backgroundTint="#666666"
                 android:padding="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/division"
@@ -151,12 +150,11 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/operator_button_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="25"
-                android:backgroundTint="#666666"
                 android:padding="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_close_black_24dp"
@@ -203,12 +201,11 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/operator_button_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="25"
-                android:backgroundTint="#666666"
                 android:padding="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_remove_black_24dp"
@@ -255,12 +252,11 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/operator_button_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="25"
-                android:backgroundTint="#666666"
                 android:padding="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_add_black_24dp"
@@ -285,7 +281,7 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/decimal_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -296,12 +292,11 @@
                 android:tag="." />
 
 
-            <ImageButton
+            <com.example.calculator_realnum.OperatorButton
                 android:id="@+id/operator_button_0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="25"
-                android:backgroundTint="#666666"
                 android:padding="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_drag_handle_black_24dp"
